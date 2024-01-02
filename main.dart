@@ -66,7 +66,7 @@ class DropdownButtonXState extends State<DropdownButtonX>{
           value: value,
           child: Text(value),
         );
-    }).toList(),
+      }).toList(),
     );
   }
 }
@@ -297,8 +297,57 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: const Text('Search'),
                     onPressed: _performSearchOrShowResult,
                   ),
+                  ElevatedButton(onPressed: (){
+                    Navigator.push(
+                      context ,
+                      MaterialPageRoute(builder: (context)=> LoginPage()),
+                    );
+                  }, child: const Text('Register Map'),
+                  ),
                 ],
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  LoginPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login Page'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            TextFormField(
+              controller: usernameController,
+              decoration: const InputDecoration(
+                labelText: 'Username',
+              ),
+            ),
+            TextFormField(
+              controller: passwordController,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+              ),
+              obscureText: true,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Handle login logic here
+              },
+              child: const Text('Login'),
             ),
           ],
         ),
