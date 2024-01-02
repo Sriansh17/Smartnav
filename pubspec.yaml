@@ -1,4 +1,4 @@
-name: smartnav
+name: testingapp
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -39,6 +39,7 @@ dependencies:
   sqflite: ^2.3.0
   collection: ^1.18.0
   flutter_tts: ^3.8.5
+  speech_to_text: ^6.5.1
 
 dev_dependencies:
   flutter_test:
