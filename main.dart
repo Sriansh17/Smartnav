@@ -30,15 +30,7 @@ class DropdownButtonApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('DropdownButton')),
-        body: const Center(
-          child: DropdownButtonX(),
-        ),
-      ),
-
-    );
+    return const DropdownButtonX();
   }
 
 }
@@ -173,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _performSearch() async {
     if (startController.text.isEmpty || endController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Please enter both start and end room numbers.'),
         ),
       );
@@ -233,7 +225,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     else{
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Please use the voice command "search" or enable the button.'),
         ),
       );
@@ -244,27 +236,28 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Speech Demo'),
+        title: const Text('SmartNav'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Text(
                 'Recognized words: $_lastWords',
-                style: TextStyle(fontSize: 20.0),
+                style: const TextStyle(fontSize: 20.0),
               ),
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: Text(
                   _listening ? 'Listening...' : 'Not Listening',
                 ),
               ),
             ),
+            const DropdownButtonApp(),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -274,7 +267,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: ListTile(
                       title: TextField(
                         controller: startController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Start room number',
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.location_on, color: Colors.blue),
@@ -283,13 +276,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: ListTile(
                       title: TextField(
                         controller: endController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'End room number',
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.location_on, color: Colors.blue),
@@ -298,10 +291,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 270),
                   ElevatedButton.icon(
-                    icon: Icon(Icons.search),
-                    label: Text('Search'),
+                    icon: const Icon(Icons.search),
+                    label: const Text('Search'),
                     onPressed: _performSearchOrShowResult,
                   ),
                 ],
