@@ -5,7 +5,7 @@ import 'db.dart';
 import 'package:collection/collection.dart';
 import 'dart:math';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:flutter/material.dart';
+
 
 class Graph {
   final List<Room> rooms;
@@ -21,11 +21,10 @@ class Graph {
   }
 
   Map<int, double> shortestDistancesFrom(int sourceRoom) {
-    final distances = Map<int, double>.fromIterable(rooms,
-        key: (room) => room.roomNumber, value: (_) => double.infinity)
+    final distances = { for (var room in rooms) room.roomNumber : double.infinity }
       ..[sourceRoom] = 0;
 
-    final visited = Set<int>();
+    final visited = <int>{};
     final priorityQueue =
     PriorityQueue<int>((a, b) => distances[a]!.compareTo(distances[b]!));
 
@@ -140,8 +139,13 @@ class Graph {
       speak(pathIns);
     }
 
+    if(startRoom>5 || endRoom>5)
+      {
+        String pathIns= "Please select relevant room";
+        speak(pathIns);
+      }
 
-    final visited = Set<int>();
+    final visited = <int>{};
     final routes = <int, List<int>>{};
     final queue = Queue<int>();
 
